@@ -6,31 +6,135 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>534</width>
+    <width>529</width>
     <height>416</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Calculate Sprague ages</string>
   </property>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>370</y>
-     <width>341</width>
-     <height>32</height>
+     <x>20</x>
+     <y>10</y>
+     <width>491</width>
+     <height>391</height>
     </rect>
    </property>
-   <property name="orientation">
-    <enum>Qt::Horizontal</enum>
-   </property>
-   <property name="standardButtons">
-    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="1">
+       <widget class="QgsMapLayerComboBox" name="combo_pop_layer"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_pop_layer">
+        <property name="text">
+         <string>Population layer</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_pop_min_age">
+        <property name="text">
+         <string>Entry age</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QSpinBox" name="spinBox_min_age">
+        <property name="maximum">
+         <number>39</number>
+        </property>
+        <property name="value">
+         <number>8</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QSpinBox" name="spinBox_duration">
+        <property name="minimum">
+         <number>1</number>
+        </property>
+        <property name="maximum">
+         <number>39</number>
+        </property>
+        <property name="value">
+         <number>4</number>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="label_pop_duration">
+        <property name="text">
+         <string>Duration</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_name">
+        <property name="text">
+         <string>Name field</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QgsFieldComboBox" name="combo_pop_name"/>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="label_gender">
+        <property name="text">
+         <string>Gender</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QComboBox" name="combo_gender">
+        <item>
+         <property name="text">
+          <string>both</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>f</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>m</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="standardButtons">
+       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
- <resources/>
+ <customwidgets>
+   <customwidget>
+    <class>QgsMapLayerComboBox</class>
+    <extends>QComboBox</extends>
+    <header>qgsmaplayercombobox.h</header>
+   </customwidget>
+   <customwidget>
+    <class>QgsFieldComboBox</class>
+    <extends>QComboBox</extends>
+    <header>qgsfieldcombobox.h</header>
+   </customwidget>
+ </customwidgets> <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>

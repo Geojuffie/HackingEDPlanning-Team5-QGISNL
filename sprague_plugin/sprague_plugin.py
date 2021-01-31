@@ -5,6 +5,13 @@ from qgis.PyQt.uic import loadUi
 
 from qgis.PyQt.QtGui import QIcon
 
+from qgis.gui import (
+    QgsMapLayerComboBox,
+    QgsFieldComboBox
+)
+from qgis.core import (
+    QgsVectorLayer
+)
 
 
 
@@ -27,9 +34,13 @@ class SpraguePlugin:
         calculate_ages_ui_fn = os.path.join(self.plugin_dir, 'calculate_ages.ui')
         self.calculate_ages_dialog = loadUi(calculate_ages_ui_fn)
         self.calculate_ages_dialog.buttonBox.accepted.connect(self.calculate_ages)
+        self.calculate_ages_dialog.combo_pop_layer.layerChanged.connect(self.update_field_combo)
+
+        self.update_field_combo()
 
 
     def unload(self):
+        self.calculate_ages_dialog.combo_pop_layer.layerChanged.disconnect(self.update_field_combo)
         self.iface.removeToolBarIcon(self.action)
         del self.action
 
@@ -40,3 +51,12 @@ class SpraguePlugin:
 
     def calculate_ages(self):
         print('calculate_ages()')
+
+
+    def update_field_combo(self):
+        layer = self.calculate_ages_dialog.combo_pop_layer.currentLayer()
+        if isinstance(layer, QgsVectorLayer):
+            self.calculate_ages_dialog.combo_pop_name.setLayer(layer)
+        else:
+            print('here :)')
+            self.calculate_ages_dialog.combo_pop_name.clear()
