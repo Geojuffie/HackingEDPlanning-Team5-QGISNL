@@ -1,0 +1,7 @@
+[general]
+name=Sprague
+description=Calculate ages from population age groups using the Sprague method.
+version=0.1
+qgisMinimumVersion=3.0
+author=Raymond Nijssen
+email=r.nijssen@terglobo.nl
