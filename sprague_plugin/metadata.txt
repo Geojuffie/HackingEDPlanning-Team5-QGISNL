@@ -2,6 +2,14 @@
 name=Sprague
 description=Calculate ages from population age groups using the Sprague method.
 version=0.1
-qgisMinimumVersion=3.0
+qgisMinimumVersion=3.10
+qgisMaximumVersion=3.99
 author=Raymond Nijssen
 email=r.nijssen@terglobo.nl
+icon=iiep_logo.png
+
+tracker=https://github.com/iiepdev/HackingEDPlanning-Team5-QGISNL/issues
+repository=https://github.com/iiepdev/HackingEDPlanning-Team5-QGISNL
+homepage=https://github.com/iiepdev/HackingEDPlanning-Team5-QGISNL
+
+tags=sprague,iiep,population
