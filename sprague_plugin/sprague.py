@@ -79,23 +79,34 @@ class Sprague():
         return age_groups
 
 
-    def set_by_age_groups(self, age_groups, sex, reset=True, max_age=79):
+    def set_by_age_groups(self, age_groups, reset=True, max_age=79):
         if reset:
             self.ages = {}
         for age in range(0, max_age+1):
-            print(age)
+            #print(age)
             panel_key, n = self._get_multipliers_panel_and_n(age)
-            print(panel_key, n)
+            #print(panel_key, n)
             multiplier = _multipliers[panel_key][n]
-            print(multiplier)
+            #print(multiplier)
             calc_age_groups = self._get_calculation_age_groups(age, panel_key)
-            print(calc_age_groups)
+            #print(calc_age_groups)
             population_groups = []
             for group in calc_age_groups:
                 population_groups.append(age_groups[group][2])
-            print(population_groups)
+            #print(population_groups)
             total_age = 0
             for i in range(5):
                 total_age += population_groups[i] * multiplier[i]
             self.ages[age] = total_age
-            print()
+            #print()
+
+
+    def get_population_for_ages(self, entry_age, duration):
+        result = 0
+        for age in range(entry_age, entry_age + duration):
+            #print(age)
+            if age in self.ages:
+                result += self.ages[age]
+            else:
+                pass #TODO raise Exception?
+        return result

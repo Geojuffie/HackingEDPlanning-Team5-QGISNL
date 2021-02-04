@@ -36,14 +36,14 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QLabel" name="label_pop_min_age">
+       <widget class="QLabel" name="label_entry_age">
         <property name="text">
          <string>Entry age</string>
         </property>
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QSpinBox" name="spinBox_min_age">
+       <widget class="QSpinBox" name="spinBox_entry_age">
         <property name="maximum">
          <number>39</number>
         </property>
@@ -66,7 +66,7 @@
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QLabel" name="label_pop_duration">
+       <widget class="QLabel" name="label_duration">
         <property name="text">
          <string>Duration</string>
         </property>

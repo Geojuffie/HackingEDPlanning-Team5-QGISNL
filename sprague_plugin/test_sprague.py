@@ -24,7 +24,7 @@ sprague1 = sprague.Sprague()
 
 print(sprague1)
 
-sprague1.set_by_age_groups(age_groups, 'f', max_age=79)
+sprague1.set_by_age_groups(age_groups, max_age=79)
 
 for age_key, age_value in sprague1.ages.items():
     print(age_key, round(age_value))
