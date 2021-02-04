@@ -17,7 +17,7 @@ from qgis.core import (
     QgsFeature
 )
 
-from .sprague import Sprague
+from .sprague import SpragueCalculator
 
 
 
@@ -70,7 +70,7 @@ class SpraguePlugin:
 
         self.output_categories = {}
         self.output_categories['age_cat_1'] = [entry_age, duration, genders]
-        self.output_categories['age_cat_2'] = [10, 4, 'M']
+        #self.output_categories['age_cat_2'] = [10, 4, 'M']
 
         self.create_result_layer("age_calculation_result")
 
@@ -82,7 +82,7 @@ class SpraguePlugin:
         for age in ages:
             print(age, self.age_group_fields[age])
 
-        self.sprague_calculator = Sprague()
+        self.sprague_calculator = SpragueCalculator()
 
         if src_layer.selectedFeatureCount():
             for src_feat in src_layer.getSelectedFeatures():
@@ -94,7 +94,10 @@ class SpraguePlugin:
                 self.process_feature(src_feat)
 
         for age_key, age_value in self.sprague_calculator.ages.items():
-            print(age_key, round(age_value))
+            pass
+            #print(age_key, round(age_value))
+
+        self.iface.mapCanvas().refreshAllLayers()
 
 
     def update_field_combo(self):
@@ -104,8 +107,6 @@ class SpraguePlugin:
         else:
             print('here :)')
             self.calculate_ages_dialog.combo_name.clear()
-
-        self.iface.mapCanvas().refreshAllLayers()
 
 
     def create_result_layer(self, name, addToMap=True, qml=None):

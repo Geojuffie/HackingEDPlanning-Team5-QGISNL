@@ -20,11 +20,11 @@ age_groups = {
     80: [80, -1, 2890900]
 }
 
-sprague1 = sprague.Sprague()
+sprague_calculator = sprague.SpragueCalculator()
 
-print(sprague1)
+print(sprague_calculator)
 
-sprague1.set_by_age_groups(age_groups, max_age=79)
+sprague_calculator.set_by_age_groups(age_groups, max_age=79)
 
-for age_key, age_value in sprague1.ages.items():
+for age_key, age_value in sprague_calculator.ages.items():
     print(age_key, round(age_value))

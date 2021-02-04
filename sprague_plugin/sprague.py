@@ -41,14 +41,14 @@ _multipliers = {
 
 
 
-class Sprague():
+class SpragueCalculator():
 
     def __init__(self):
         self.ages = {}
 
 
     def __str__(self):
-        result = 'Sprague[len: {len(self.ages)}]'
+        result = 'SpragueCalculator[len: {len(self.ages)}]'
         return result
 
 
