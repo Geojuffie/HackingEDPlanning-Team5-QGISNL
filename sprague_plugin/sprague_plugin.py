@@ -4,14 +4,20 @@ from qgis.PyQt.QtWidgets import QAction, QMessageBox
 from qgis.PyQt.uic import loadUi
 
 from qgis.PyQt.QtGui import QIcon
+from qgis.PyQt.QtCore import QVariant
 
 from qgis.gui import (
     QgsMapLayerComboBox,
     QgsFieldComboBox
 )
 from qgis.core import (
-    QgsVectorLayer
+    QgsVectorLayer,
+    QgsField,
+    QgsProject,
+    QgsFeature
 )
+
+#import .sprague
 
 
 
@@ -52,11 +58,111 @@ class SpraguePlugin:
     def calculate_ages(self):
         print('calculate_ages()')
 
+        self.create_result_layer("age_calculation_result")
+
+        src_layer = self.calculate_ages_dialog.combo_pop_layer.currentLayer()
+        print(src_layer)
+
+        self.src_name_field = self.calculate_ages_dialog.combo_name.currentText()
+        print(self.src_name_field)
+
+        genders = self.calculate_ages_dialog.combo_gender.currentText()
+        #genders = 'F'
+        self.age_group_fields = self.find_age_group_fields(src_layer, genders)
+        print(self.age_group_fields)
+        ages = [k for k in self.age_group_fields]
+        ages.sort()
+        for age in ages:
+            print(age, self.age_group_fields[age])
+
+
+        if src_layer.selectedFeatureCount():
+            for src_feat in src_layer.getSelectedFeatures():
+                #print(src_feat)
+                self.process_feature(src_feat)
+        else:
+            for src_feat in src_layer.getFeatures():
+                #print(src_feat)
+                self.process_feature(src_feat)
+
 
     def update_field_combo(self):
         layer = self.calculate_ages_dialog.combo_pop_layer.currentLayer()
         if isinstance(layer, QgsVectorLayer):
-            self.calculate_ages_dialog.combo_pop_name.setLayer(layer)
+            self.calculate_ages_dialog.combo_name.setLayer(layer)
         else:
             print('here :)')
-            self.calculate_ages_dialog.combo_pop_name.clear()
+            self.calculate_ages_dialog.combo_name.clear()
+
+        self.iface.mapCanvas().refreshAllLayers()
+
+
+    def create_result_layer(self, name, addToMap=True, qml=None):
+        featureType = 'Polygon?crs=' + self.iface.mapCanvas().mapSettings().destinationCrs().authid()
+        layer = QgsVectorLayer(featureType, name, 'memory')
+
+        provider = layer.dataProvider()
+
+        fields = []
+        fields.append(QgsField('id', QVariant.LongLong, 'int8'))
+        fields.append(QgsField('name', QVariant.String))
+        fields.append(QgsField('age_cat_1', QVariant.LongLong, 'int8'))
+        provider.addAttributes(fields)
+        layer.updateFields()
+
+        if addToMap:
+            QgsProject.instance().addMapLayer(layer)
+
+        if qml is not None:
+            layer.loadNamedStyle(qml)
+
+        self.dst_layer = layer
+        self.dst_provider = provider
+
+
+    def process_feature(self, src_feat):
+        dst_feat = QgsFeature()
+        dst_feat.setGeometry(src_feat.geometry())
+        attributes = [0]
+        attributes.append(src_feat[self.src_name_field])
+
+        age_group_values = self.get_values_for_age_groups(src_feat)
+        print(age_group_values)
+
+        age_cat_1 = 5000
+
+
+        attributes.append(age_cat_1)
+        dst_feat.setAttributes(attributes)
+
+        self.dst_provider.addFeatures([dst_feat])
+
+
+    def find_age_group_fields(self, src_layer, genders):
+        result = {}
+        for field in src_layer.fields():
+            print(field.name())
+            parts = field.name().split('_')
+            if len(parts) < 2:
+                continue
+            if parts[0].upper() in genders:
+                age = int(parts[1])
+                if age == 1:
+                    age = 0
+                if age in result:
+                    result[age].append(field.name())
+                else:
+                    result[age] = [field.name()]
+        return result
+
+
+    def get_values_for_age_groups(self, feat):
+        result = {}
+        for i in range(0, 80, 5):
+            print(i)
+            if i in self.age_group_fields:
+                total_pop = 0
+                for fld in self.age_group_fields[i]:
+                    total_pop += feat[fld]
+                result[i] = [i, i+4, total_pop]
+        return result

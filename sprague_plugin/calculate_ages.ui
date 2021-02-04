@@ -80,7 +80,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QgsFieldComboBox" name="combo_pop_name"/>
+       <widget class="QgsFieldComboBox" name="combo_name"/>
       </item>
       <item row="4" column="0">
        <widget class="QLabel" name="label_gender">
@@ -93,17 +93,17 @@
        <widget class="QComboBox" name="combo_gender">
         <item>
          <property name="text">
-          <string>both</string>
+          <string>F+M</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>f</string>
+          <string>F</string>
          </property>
         </item>
         <item>
          <property name="text">
-          <string>m</string>
+          <string>M</string>
          </property>
         </item>
        </widget>
@@ -124,17 +124,18 @@
   </widget>
  </widget>
  <customwidgets>
-   <customwidget>
-    <class>QgsMapLayerComboBox</class>
-    <extends>QComboBox</extends>
-    <header>qgsmaplayercombobox.h</header>
-   </customwidget>
-   <customwidget>
-    <class>QgsFieldComboBox</class>
-    <extends>QComboBox</extends>
-    <header>qgsfieldcombobox.h</header>
-   </customwidget>
- </customwidgets> <resources/>
+  <customwidget>
+   <class>QgsMapLayerComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsmaplayercombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>QgsFieldComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qgsfieldcombobox.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
  <connections>
   <connection>
    <sender>buttonBox</sender>
