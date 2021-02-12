@@ -1,5 +1,4 @@
-![](D:\media\image2.jpg){width="1.562992125984252in"
-height="1.531496062992126in"}IIEP Hacking edPlanning
+IIEP Hacking edPlanning
 
 Challenge 5 -- Estimating school-age population
 
@@ -31,7 +30,7 @@ Download both the Sprague-Multiplier model file and the sprague_plugin zip file 
 
 Download the shapefiles with the Administrative Boundaries for the country of choice from <https://data.humdata.org/dataset>
 
-![](D:\Temp Qgis\Hacking_ed_Planning\hdx.png)
+![](EDIT PATH\hdx.png)
 
 Select Administrative Divisions
 
@@ -69,7 +68,7 @@ Add the administrative division files to a new project and zoom to layer.
 
 Open the Sprague-multiplier model (processing toolbox \> models).
 
-![](D:\Temp Qgis\Hacking_ed_Planning\model_ param.png)
+![](EDIT PATH\model_ param.png)
 
 Set the model parameters:
 
@@ -89,7 +88,7 @@ When finished, install the the sprague-plugin via the plugin manager 'install fr
 
 Start the sprague plugin
 
-![](D:\Temp Qgis\Hacking_ed_Planning\sprague_plugin_param.png)
+![](EDIT PATH\sprague_plugin_param.png)
 
 Set the plugin parameters:
 
