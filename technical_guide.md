@@ -70,7 +70,7 @@ Add the administrative division files to a new project and zoom to layer.
 
 Open the Sprague-multiplier model (processing toolbox \> models).
 
-![](model_ param.png)
+![](model_param.png)
 
 Set the model parameters:
 
