@@ -16,7 +16,7 @@ Date latest revision: 12-02-2021
 
 ### Use of sprague-multiplier model and plugin in QGIS 3.x
 
-The challenge was to get population data for custom school-age groups and custom geographical area's. Using the population data from WorldPop, the geographical data from HDX and the Sprague multiplier methodology (available as a QGIS model).
+The challenge was to get population data for custom school-age groups and custom geographical area's. Using the population data from WorldPop, the geographical data from HDX, a QGIS model (improvement on the IIEP version) and the Sprague multiplier methodology (through a new plugin for QGIS).
 
 The following steps will get you population data for user selected geographical area's and a user selected school-age group.
 
@@ -24,7 +24,7 @@ The following steps will get you population data for user selected geographical 
 
 ### A) collect data
 
-##### A-1 Sprague-multiplier model and plugin
+##### A-1 Worldpop model and Sprague-multiplier plugin
 
 Download both the worldpop model file and the sprague_plugin zip file from this repository.
 
