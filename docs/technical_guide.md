@@ -1,4 +1,4 @@
-![](iiep.jpg)
+![](img/iiep.jpg)
 
 IIEP Hacking edPlanning
 
@@ -32,7 +32,7 @@ Download both the worldpop model file and the sprague_plugin zip file from this 
 
 Download the shapefiles with the Administrative Boundaries for the country of choice from <https://data.humdata.org/dataset>
 
-![](hdx.png)
+![](img/hdx.png)
 
 Select Administrative Divisions
 
@@ -70,31 +70,31 @@ Add the administrative division files to a new project and zoom to layer.
 
 Open the worldpop model (processing toolbox \> models).
 
-![](model_param.png)
+![](img/model_param.png)
 
 Set the model parameters:
 
 -   Smallest administrative boundary: choose your desired administrative division layer, or your own (newly) created vector layer.
-    
+
 -   country code: type the ISO three letter country code for your country
-    
+
 -   data location: select the data location where you stored the raster files agesex\_\*
-    
+
 -   year: type the year that corresponds with the raster files you downloaded.
 
 Click Run
 
-The model will calculate the population for each raster age_sex group per feature in the vector layer. The vector layer will be updated, new fields will be added, 1 for each raster file, up to age-group 35-39 
+The model will calculate the population for each raster age_sex group per feature in the vector layer. The vector layer will be updated, new fields will be added, 1 for each raster file, up to age-group 35-39
 
 When finished, install the the sprague-plugin via the plugin manager 'install from zip' option, if you haven't done so already.
 
 Start the sprague plugin
 
-![](sprague_plugin_param.png)
+![](img/sprague_plugin_param.png)
 
 Set the plugin parameters:
 
-Population layer: the updated vector layer containing the newly added population data 
+Population layer: the updated vector layer containing the newly added population data
 
 Name field: choose a field which you need to identify the different features, e.g. the field containing the names for each administrative area.
 
