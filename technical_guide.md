@@ -26,7 +26,7 @@ The following steps will get you population data for user selected geographical 
 
 ##### A-1 Sprague-multiplier model and plugin
 
-Download both the Sprague-Multiplier model file and the sprague_plugin zip file from this repository.
+Download both the worldpop model file and the sprague_plugin zip file from this repository.
 
 ##### A-2 country polygon data
 
@@ -52,7 +52,7 @@ Select country of choice and download all 'agesex\_\* raster files, one by one. 
 
 > A pull request has been posted in the wpgpDatasets github to add a multi-select feature. This feature is tested and available at <https://github.com/arongergely/wpgpDataQPD/tree/multiselection>
 
-For the worldpop-spraguemultiplier model to function, you need to download at least all agesex raster datafiles up to age 35-39 (e.g. sec_f\_35_2020.tif ) and both \_f\_ and \_m\_ for a year of choice such as 2019 or 2020.
+For the worldpop model to function, you need to download at least all agesex raster datafiles up to age 35-39 (e.g. sec_f\_35_2020.tif ) and both \_f\_ and \_m\_ for a year of choice such as 2019 or 2020.
 
 
 
@@ -60,7 +60,7 @@ For the worldpop-spraguemultiplier model to function, you need to download at le
 
 Add the administrative division files to a new project and zoom to layer.
 
-> The Worldpop-spraguemultiplier model uses a polygon layer to process the raster agesex data. It will calculate the results for every polygon in the layer. If, for instance you use an admin3 division (typically a low level administrative division) you will get the results for each and every administration area in the country.
+> The worldpop model uses a polygon layer to process the raster agesex data. It will calculate the results for every polygon in the layer. If, for instance you use an admin3 division (typically a low level administrative division) you will get the results for each and every administration area in the country.
 >
 > If you wish to see result for just one administration area, the quickest way is probably to use the Split Vector layer tool (Vector \> Datamanagement-tools \> Split Vector layer) and add the specific administration area to your project.
 >
@@ -68,7 +68,7 @@ Add the administrative division files to a new project and zoom to layer.
 
 
 
-Open the Sprague-multiplier model (processing toolbox \> models).
+Open the worldpop model (processing toolbox \> models).
 
 ![](model_param.png)
 
@@ -76,11 +76,11 @@ Set the model parameters:
 
 -   Smallest administrative boundary: choose your desired administrative division layer, or your own (newly) created vector layer.
     
--   Country code: type the ISO three letter country code for your country
+-   country code: type the ISO three letter country code for your country
     
--   Data location: select the data location where you stored the raster files agesex\_\*
+-   data location: select the data location where you stored the raster files agesex\_\*
     
--   Year: type the year that corresponds with the raster files you downloaded.
+-   year: type the year that corresponds with the raster files you downloaded.
 
 Click Run
 
@@ -94,7 +94,7 @@ Start the sprague plugin
 
 Set the plugin parameters:
 
-population layer: the updated vector layer containing the newly added population data 
+Population layer: the updated vector layer containing the newly added population data 
 
 Name field: choose a field which you need to identify the different features, e.g. the field containing the names for each administrative area.
 
