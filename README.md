@@ -1,4 +1,4 @@
-#Hacking ED Planning - Team 5 - QGISNL
+# Hacking ED Planning - Team 5 - QGISNL
 
 This is the repository where the team from The Netherlands QGIS User Group (qgis.nl) has collaborated
 during the UNESCO Hacking event for Education Planning on 29 - 31 January 2021.
