@@ -20,7 +20,7 @@ The challenge was to get population data for custom school-age groups and custom
 
 The following steps will get you population data for user selected geographical area's and a user selected school-age group.
 
-
+leuk
 
 ### A) collect data
 
